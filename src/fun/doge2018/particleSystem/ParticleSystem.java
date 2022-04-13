@@ -5,10 +5,10 @@ import fun.doge2018.particleSystem.util.RenderUtil;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
-import org.newdawn.slick.svg.Gradient;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class ParticleSystem {
     private boolean displayClosestLines;
     private int lineRadius;
@@ -43,6 +43,9 @@ public class ParticleSystem {
         addParticles(particleAmount);
     }
 
+    public static void main(String args[]) {
+    }
+    
     public void addParticles(int particleAmount) {
         for (int i = 0; i < particleAmount; i++) {
             particleList.add(new Particle());
