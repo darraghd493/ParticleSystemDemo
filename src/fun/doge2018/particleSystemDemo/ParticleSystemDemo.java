@@ -17,7 +17,8 @@ public class ParticalSystemDemo extends BasicGame {
 
     public static void main(String args[]) {
         try {
-            AppGameContainer appGameContainer = new AppGameContainer(this);
+            ParticalSystemDemo particalSystemDemo = new ParticalSystemDemo();
+            AppGameContainer appGameContainer = new AppGameContainer(particalSystemDemo);
 
             appGameContainer.setDisplayMode((int) appGameContainer.getScreenWidth()/2, (int) appGameContainer.getScreenWidth()/4, false);
             appGameContainer.setVSync(false);
