@@ -7,45 +7,42 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ParticleSystem {
-    private boolean displayClosestLines;
-    private int lineRadius;
+    private final boolean displayClosestLines;
+    private final int lineRadius;
     private static final float particleSpeed = 0.125f;
-    private List<Particle> particleList;
+    private static final List<Particle> particleList = new ArrayList<Particle>();
 
     public ParticleSystem() {
         displayClosestLines = true;
         lineRadius = 150;
-        particleList = new ArrayList<Particle>();
         addParticles(200);
     }
 
     public ParticleSystem(boolean displayClosestLines) {
         this.displayClosestLines = displayClosestLines;
         lineRadius = 150;
-        particleList = new ArrayList<Particle>();
         addParticles(200);
     }
 
     public ParticleSystem(int lineRadius, boolean displayClosestLines) {
         this.displayClosestLines = displayClosestLines;
         this.lineRadius = lineRadius;
-        particleList = new ArrayList<Particle>();
         addParticles(200);
     }
 
     public ParticleSystem(int particleAmount, int lineRadius, boolean displayClosestLines) {
         this.displayClosestLines = displayClosestLines;
         this.lineRadius = lineRadius;
-        particleList = new ArrayList<Particle>();
         addParticles(particleAmount);
     }
 
     public static void main(String args[]) {
     }
-    
+
     public void addParticles(int particleAmount) {
         for (int i = 0; i < particleAmount; i++) {
             particleList.add(new Particle());
@@ -58,6 +55,40 @@ public class ParticleSystem {
 
     public void addCustomParticle(Particle particle) {
         particleList.add(particle);
+    }
+
+    public void addCustomParticles(Particle[] particle) {
+        particleList.addAll(Arrays.asList(particle));
+    }
+
+    public void addCustomParticles(List<Particle> particle) {
+        particleList.addAll(particle);
+    }
+
+    public void removeParticle() {
+        if (particleList.size() - 1 > 0)
+            particleList.remove(0);
+    }
+
+    public void removeParticles(int particleAmount) {
+        if (particleAmount > 0 && particleList.size() - particleAmount > 0) {
+            particleList.subList(0, particleAmount).clear();
+        }
+    }
+
+    public void removeCustomParticle(Particle particle) {
+        if (particleList.size() - 1 > 0)
+            particleList.remove(particle);
+    }
+
+    public void removeCustomParticles(Particle[] particles) {
+        if (particleList.size() - particles.length > 0)
+            particleList.removeAll(Arrays.asList(particles));
+    }
+
+    public void removeCustomParticles(List<Particle> particles) {
+        if (particleList.size() - particles.size() > 0)
+            particleList.removeAll(particles);
     }
 
     public void tick(int tickDelta) {
@@ -124,5 +155,7 @@ public class ParticleSystem {
         GL11.glDisable(GL11.GL_POINT_SMOOTH);
     }
 
-
+    public void shutdown() {
+        particleList.clear();
+    }
 }
