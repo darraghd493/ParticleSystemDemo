@@ -39,7 +39,8 @@ public class ParticalSystemDemo extends BasicGame {
         if (Mouse.isButtonDown(0))
             particleSystem.addCustomParticle(new Particle(Mouse.getX(),
                     Display.getHeight() - Mouse.getY()));
-        particleSystem.tick(delta);
+        if (Mouse.isButtonDown(1))
+            particleSystem.removeParticle();
     }
 
     @Override
