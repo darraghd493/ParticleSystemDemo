@@ -8,17 +8,17 @@ import org.newdawn.slick.*;
 
 import javax.swing.*;
 
-public class ParticalSystemDemo extends BasicGame {
+public class ParticleSystemDemo extends BasicGame {
     private ParticleSystem particleSystem;
 
-    public ParticalSystemDemo() {
+    public ParticleSystemDemo() {
         super("Particle System Demo");
     }
 
     public static void main(String args[]) {
         try {
-            ParticalSystemDemo particalSystemDemo = new ParticalSystemDemo();
-            AppGameContainer appGameContainer = new AppGameContainer(particalSystemDemo);
+            ParticleSystemDemo ParticleSystemDemo = new ParticleSystemDemo();
+            AppGameContainer appGameContainer = new AppGameContainer(ParticleSystemDemo);
 
             appGameContainer.setDisplayMode((int) appGameContainer.getScreenWidth()/2, (int) appGameContainer.getScreenWidth()/4, false);
             appGameContainer.setVSync(false);
