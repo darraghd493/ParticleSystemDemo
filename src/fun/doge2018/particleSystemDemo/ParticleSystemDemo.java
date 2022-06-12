@@ -41,6 +41,7 @@ public class ParticleSystemDemo extends BasicGame {
                     Display.getHeight() - Mouse.getY()));
         if (Mouse.isButtonDown(1))
             particleSystem.removeParticle();
+        particleSystem.tick(delta);
     }
 
     @Override
